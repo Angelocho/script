@@ -9,4 +9,7 @@ else
 	rm -r /var/www/$nombre
 	rm -r /etc/apache2/sites-available/$nombre.conf
 	rm -r /etc/apache2/sites-available/$nombre-blog.conf
+        mariadb
+        DROP DATABASE $nombre;
+        DROP USER $nombre;
 fi
