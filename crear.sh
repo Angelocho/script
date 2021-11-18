@@ -26,6 +26,9 @@ else
 		a2ensite /etc/apache2/sites-available/$nombre-blog.conf
 		mkdir -p /var/www/$nombre
 		mkdir -p /var/www/blog/$nombre
-		echo hola
-
+		chown $nombre /var/www/$nombre
+		chown -R $nombre /var/www/$nombre/
+        mkdir -p /var/www/blog/$nombre/  
+		chown $nombre /var/www/blog/$nombre
+		chown -R $nombre /var/www/blog/$nombre/
 fi
