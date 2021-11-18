@@ -37,8 +37,9 @@ else
 
 		echo "Procediendo a instalar un wordpress..."
 		
-		mysql -e CREATE DATABASE $nombre;
-		mysql -e CREATE USER "$nombre"@"localhost" IDENTIFIED BY "$password";
-		mysql -e GRANT ALL ON $nombre.* TO "$nombre"@"localhost";
-		exit
+		mysql -e "CREATE DATABASE $nombre";
+		mysql -e "CREATE USER "$nombre"@"localhost" IDENTIFIED BY "$password"";
+		mysql -e "GRANT ALL ON $nombre.* TO "$nombre"@"localhost"";
+		
+		
 fi
