@@ -13,19 +13,19 @@ then
 else
         echo Creando $nombre ....
         useradd -d /var/www/$nombre -m -s /bin/bash $nombre
-	echo "$nombre:$password" | chpasswd
-	echo Tu contraseña de usuario es $password
+		echo "$nombre:$password" | chpasswd
+		echo Tu contraseña de usuario es $password
 
-	echo Creando sitio $nombre.iaw.com
+		echo Creando sitio $nombre.iaw.com
         sed 's/<usuario>/$nombre/g' /etc/apache2/sites-available/000-plantilla.conf > /etc/apache2/sites-available/$nombre.conf
 	
-	echo Creando blog blog.$nombre.iaw.com
+		echo Creando blog blog.$nombre.iaw.com
         sed 's/<usuario>/$nombre/g' /etc/apache2/sites-available/000-blog-plantilla.conf > /etc/apache2/sites-available/$nombre-blog.conf
 	
-	a2ensite /etc/apache2/sites-available/$nombre.conf
-	a2ensite /etc/apache2/sites-available/$nombre-blog.conf
-	mkdir -p /var/www/$nombre
-	mkdir -p /var/www/blog/$nombre
-
+		a2ensite /etc/apache2/sites-available/$nombre.conf
+		a2ensite /etc/apache2/sites-available/$nombre-blog.conf
+		mkdir -p /var/www/$nombre
+		mkdir -p /var/www/blog/$nombre
+		echo hola
 
 fi
