@@ -22,8 +22,8 @@ else
 		echo "Creando blog blog.$nombre.iaw.com"
         sed "s/<usuario>/$nombre/g" /etc/apache2/sites-available/000-blog-plantilla.conf > /etc/apache2/sites-available/$nombre-blog.conf
 	
-		a2ensite $nombre.conf
-		a2ensite $nombre-blog.conf
+		a2ensite $nombre.conf >&/dev/null
+		a2ensite $nombre-blog.conf >&/dev/null
 
 		echo "Creando carpetas y modificando permisos..."
 		mkdir -p /var/www/$nombre

@@ -3,13 +3,19 @@ read -p "Dame el nombre " nombre
 if [[ -z "$nombre" ]]
 then
         echo " el nombre está vacio" 
-else
+      elif id $nombre;  then
+
         echo Borrando $nombre ....
         userdel $nombre
-	rm -r /var/www/$nombre
-	rm -r /etc/apache2/sites-available/$nombre.conf
-	rm -r /etc/apache2/sites-available/$nombre-blog.conf
+	rm -rf /var/www/$nombre
+        a2dissite $nombre.conf >&/dev/null
+        a2dissite $nombre-blog.conf >&/dev/null
+	rm -rf /etc/apache2/sites-available/$nombre.conf
+	rm -rf /etc/apache2/sites-available/$nombre-blog.conf
         
         mysql -e "DROP DATABASE $nombre";
         mysql -e "DROP USER $nombre@localhost";
+       else
+           echo "Usuario no existe"
+
 fi
