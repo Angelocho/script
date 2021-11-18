@@ -17,10 +17,10 @@ else
 		echo Tu contraseña de usuario es $password
 
 		echo Creando sitio $nombre.iaw.com
-        sed 's/<usuario>/$nombre/g' /etc/apache2/sites-available/000-plantilla.conf > /etc/apache2/sites-available/$nombre.conf
+        sed 's/<usuario>/${nombre}/g' /etc/apache2/sites-available/000-plantilla.conf > /etc/apache2/sites-available/$nombre.conf
 	
 		echo Creando blog blog.$nombre.iaw.com
-        sed 's/<usuario>/$nombre/g' /etc/apache2/sites-available/000-blog-plantilla.conf > /etc/apache2/sites-available/$nombre-blog.conf
+        sed 's/<usuario>/${nombre}/g' /etc/apache2/sites-available/000-blog-plantilla.conf > /etc/apache2/sites-available/$nombre-blog.conf
 	
 		a2ensite $nombre.conf
 		a2ensite $nombre-blog.conf
@@ -31,4 +31,5 @@ else
         mkdir -p /var/www/blog/$nombre/  
 		chown $nombre /var/www/blog/$nombre
 		chown -R $nombre /var/www/blog/$nombre/
+		systemctl
 fi
