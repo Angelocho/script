@@ -14,7 +14,7 @@ else
         echo "Creando $nombre ...."
         useradd -d /var/www/$nombre -m -s /bin/bash $nombre
 		echo "$nombre:$password" | chpasswd
-		"echo Tu contraseña de usuario es $password"
+		echo "Tu contraseña de usuario es $password"
 
 		echo "Creando sitio $nombre.iaw.com"
         sed "s/<usuario>/$nombre/g" /etc/apache2/sites-available/000-plantilla.conf > /etc/apache2/sites-available/$nombre.conf
@@ -38,7 +38,7 @@ else
 		echo "Procediendo a instalar un wordpress..."
 		
 		mysql -e "CREATE DATABASE $nombre";
-		mysql -e "CREATE USER "$nombre"@"localhost" IDENTIFIED BY "$password"";
+		mysql -e "CREATE USER "$nombre"@"localhost" IDENTIFIED BY '$password'";
 		mysql -e "GRANT ALL ON $nombre.* TO "$nombre"@"localhost"";
 		
 		

@@ -11,5 +11,5 @@ else
 	rm -r /etc/apache2/sites-available/$nombre-blog.conf
         
         mysql -e "DROP DATABASE $nombre";
-        mysql -e "DROP USER $nombre";
+        mysql -e "DROP USER $nombre@localhost";
 fi
