@@ -1,3 +1,4 @@
 #!/bin/bash
-scp -p 2222 -r ../script/*.sh angelocho@192.168.56.10: 
+scp -P 2222 *.sh angelocho@192.168.56.10:/home/angelocho/ 
+
 

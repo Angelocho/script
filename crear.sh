@@ -22,8 +22,8 @@ else
 		echo Creando blog blog.$nombre.iaw.com
         sed 's/<usuario>/$nombre/g' /etc/apache2/sites-available/000-blog-plantilla.conf > /etc/apache2/sites-available/$nombre-blog.conf
 	
-		a2ensite /etc/apache2/sites-available/$nombre.conf
-		a2ensite /etc/apache2/sites-available/$nombre-blog.conf
+		a2ensite $nombre.conf
+		a2ensite $nombre-blog.conf
 		mkdir -p /var/www/$nombre
 		mkdir -p /var/www/blog/$nombre
 		chown $nombre /var/www/$nombre
