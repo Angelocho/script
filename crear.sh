@@ -56,7 +56,7 @@ else
 		sed -i "s/password_here/$password/g" "/var/www/blog/$nombre/wp-config.php"
 
 		echo "Enviando por mail la contraseña...."
-		
-		echo "Tu contraseña de usuario es $password"
+		echo $password
+		echo "Tu contraseña de usuario para conectarte por sftp es $password y tu usuario $nombre ademas ya puedes visitar tu sitio web ($nombre.iaw.com) y blog (blog.$nombre.iaw.com)" | mail -s "Account Password for you $nombre" $mail >&/dev/null
 
 fi
