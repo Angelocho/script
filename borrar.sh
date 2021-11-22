@@ -8,6 +8,7 @@ then
         echo Borrando $nombre ....
         userdel $nombre
 	rm -rf /var/www/$nombre
+        rm -rf /var/www/blog/$nombre
         a2dissite $nombre.conf >&/dev/null
         a2dissite $nombre-blog.conf >&/dev/null
 	rm -rf /etc/apache2/sites-available/$nombre.conf
