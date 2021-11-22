@@ -32,6 +32,7 @@ else
 		chown $nombre /var/www/$nombre 
 		chown $nombre -R /var/www/$nombre/ 
 		echo "Este es el fichero index.html de $nombre" >> /var/www/$nombre/index.html
+		chown $nombre /var/www/$nombre/index.html
 		systemctl reload apache2
 
 		echo "Procediendo a instalar un wordpress..."
@@ -57,6 +58,6 @@ else
 
 		echo "Enviando por mail la contraseña...."
 		echo $password
-		echo "Tu contraseña de usuario para conectarte por sftp es $password y tu usuario $nombre ademas ya puedes visitar tu sitio web ($nombre.iaw.com) y blog (blog.$nombre.iaw.com)" | mail -s "Account Password for you $nombre" $mail >&/dev/null
+		echo "Tu contraseña de usuario para conectarte por sftp es $password y tu usuario $nombre, además ya puedes visitar tu sitio web ($nombre.iaw.com) y blog (blog.$nombre.iaw.com)" | mail -s "Account Password for you $nombre" $mail >&/dev/null
 
 fi

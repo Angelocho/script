@@ -1,5 +1,6 @@
 #!/bin/bash
 read -p "Dame el nombre " nombre
+nombre=$(echo $nombre | tr '[:upper:]' '[:lower:]')
 if [[ -z "$nombre" ]]
 then
         echo " el nombre está vacio" 
