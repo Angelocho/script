@@ -30,9 +30,6 @@ else
 		mkdir -p /var/www/blog/$nombre
 		chown $nombre /var/www/$nombre
 		chown -R $nombre /var/www/$nombre/
-        mkdir -p /var/www/blog/$nombre/  
-		chown $nombre /var/www/blog/$nombre
-		chown -R $nombre /var/www/blog/$nombre/
 		systemctl reload apache2
 
 		echo "Procediendo a instalar un wordpress..."
@@ -40,6 +37,8 @@ else
 		mysql -e "CREATE DATABASE $nombre";
 		mysql -e "CREATE USER "$nombre"@"localhost" IDENTIFIED BY '$password'";
 		mysql -e "GRANT ALL ON $nombre.* TO "$nombre"@"localhost"";
-		
+		wget /var/www/blog/$nombre https://es.wordpress.org/latest-es_ES.tar.gz
+		chown $nombre /var/www/blog/$nombre
+		chown -R $nombre /var/www/blog/$nombre/ 
 		
 fi
