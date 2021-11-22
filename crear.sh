@@ -16,7 +16,7 @@ else
         echo "Creando $nombre ...."
         useradd -d /var/www/$nombre -m -s /bin/bash $nombre
 		echo "$nombre:$password" | chpasswd
-		echo "Tu contraseña de usuario es $password"
+		
 
 		echo "Creando sitio $nombre.iaw.com"
         sed "s/<usuario>/$nombre/g" /etc/apache2/sites-available/000-plantilla.conf > /etc/apache2/sites-available/$nombre.conf
@@ -54,4 +54,9 @@ else
 		sed -i "s/database_name_here/$nombre/g" "/var/www/blog/$nombre/wp-config.php"
 		sed -i "s/username_here/$nombre/g" "/var/www/blog/$nombre/wp-config.php"
 		sed -i "s/password_here/$password/g" "/var/www/blog/$nombre/wp-config.php"
+
+		echo "Enviando por mail la contraseña...."
+		
+		echo "Tu contraseña de usuario es $password"
+
 fi
