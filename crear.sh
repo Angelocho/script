@@ -29,10 +29,13 @@ else
 
 		echo "Creando carpetas y modificando permisos..."
 		mkdir -p /var/www/$nombre
-		chown $nombre /var/www/$nombre 
-		chown $nombre -R /var/www/$nombre/ 
-		echo "Este es el fichero index.html de $nombre" >> /var/www/$nombre/index.html
-		chown $nombre /var/www/$nombre/index.html
+		mkdir -p /var/www/$nombre/files
+		chown root:root /var/www/$nombre
+		chmod 755 /var/www/$nombre
+		chown $nombre:$nombre /var/www/$nombre/*
+		chmod 770 /var/www/$nombre/*  
+		echo "Este es el fichero index.html de $nombre" >> /var/www/$nombre/files/index.html
+		chown $nombre /var/www/$nombre/files/index.html
 		systemctl reload apache2
 
 		echo "Procediendo a instalar un wordpress..."
@@ -55,6 +58,10 @@ else
 		sed -i "s/database_name_here/$nombre/g" "/var/www/blog/$nombre/wp-config.php"
 		sed -i "s/username_here/$nombre/g" "/var/www/blog/$nombre/wp-config.php"
 		sed -i "s/password_here/$password/g" "/var/www/blog/$nombre/wp-config.php"
+
+		echo "Configurando acceso por sftp..."
+		adduser $nombre sftpusers
+		
 
 		echo "Enviando por mail la contraseña...."
 		echo $password
