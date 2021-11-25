@@ -4,6 +4,7 @@ read -p "Dame el mail " mail
 password=$(openssl rand -base64 12)
 nombre=$(echo $nombre | tr '[:upper:]' '[:lower:]')
 
+if [[ $mail =~ ^[a-zA-Z0-9_]+@[a-zA-Z_]+?\.[a-zA-Z]{2,5}$ ]]; then
 if [[ -z "$nombre" ]]
 then
         echo " el nombre está vacio" 
@@ -14,4 +15,7 @@ then
        else
            echo "Usuario no existe"
 
+fi
+else 
+    echo "Email no valido"
 fi
