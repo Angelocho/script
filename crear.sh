@@ -8,7 +8,10 @@ read -p "Dame el mail " mail
 nombre=$(echo $nombre | tr '[:upper:]' '[:lower:]')
 
 id $nombre >&/dev/null && echo "usuario existente" && exit 3
+#(echo "$mail"| grep -Eq ^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,5}$) 
 
+
+if [[ $mail =~ ^[a-zA-Z0-9_]+@[a-zA-Z_]+?\.[a-zA-Z]{2,5}$ ]]; then
 if [[ -z "$nombre" ]] || [[ -z "$mail" ]]
 then
         echo " el nombre o el mail está vacio" 
@@ -72,4 +75,7 @@ else
 		echo $password
 		echo "Tu contraseña de usuario para conectarte por sftp es $password y tu usuario $nombre, además ya puedes visitar tu sitio web ($nombre.iaw.com) y blog (blog.$nombre.iaw.com)" | mail -s "Account Password for you $nombre" $mail >&/dev/null
 
+fi
+else
+    echo "Email Invalido"
 fi
