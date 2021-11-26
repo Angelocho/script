@@ -22,9 +22,11 @@ else
 		
 
 		echo "Creando sitio $nombre.iaw.com"
+
         sed "s/<usuario>/$nombre/g" /etc/apache2/sites-available/000-plantilla.conf > /etc/apache2/sites-available/$nombre.conf
 	   
 		echo "Creando blog blog.$nombre.iaw.com"
+
         sed "s/<usuario>/$nombre/g" /etc/apache2/sites-available/000-blog-plantilla.conf > /etc/apache2/sites-available/$nombre-blog.conf
 	
 		a2ensite $nombre.conf >&/dev/null
@@ -58,6 +60,7 @@ else
 		echo "Configurando Wordpress..."
 		cp /var/www/blog/$nombre/wp-config-sample.php /var/www/blog/$nombre/wp-config.php
 		chown $nombre:$nombre /var/www/blog/$nombre/wp-config.php
+		
 		sed -i "s/database_name_here/$nombre/g" "/var/www/blog/$nombre/wp-config.php"
 		sed -i "s/username_here/$nombre/g" "/var/www/blog/$nombre/wp-config.php"
 		sed -i "s/password_here/$password/g" "/var/www/blog/$nombre/wp-config.php"
