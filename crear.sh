@@ -62,7 +62,9 @@ else
 		chown $nombre:$nombre /var/www/blog/$nombre/wp-config.php
 		
 		sed -i "s/database_name_here/$nombre/g" "/var/www/blog/$nombre/wp-config.php"
+
 		sed -i "s/username_here/$nombre/g" "/var/www/blog/$nombre/wp-config.php"
+		
 		sed -i "s/password_here/$password/g" "/var/www/blog/$nombre/wp-config.php"
 		         
 		mv /var/www/blog/$nombre /var/www/blog/wordpress
